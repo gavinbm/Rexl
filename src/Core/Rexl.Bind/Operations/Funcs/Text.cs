@@ -758,3 +758,43 @@ public sealed partial class TextReplaceFunc : RexlOper
         return src.Replace(remove, insert);
     }
 }
+public sealed partial class TextToAsciiFunc : TextFuncOne
+{
+
+    public static readonly TextToAsciiFunc Instance = new TextToAsciiFunc();
+
+    private TextToAsciiFunc()
+        : base(new DName("ToAscii"))
+    {
+    }
+
+    protected override ArgTraits GetArgTraitsCore(int carg)
+    {
+        Validation.Assert(SupportsArity(carg));
+        var maskAll = BitSet.GetMask(carg);
+        var maskOpt = maskAll.ClearBit(0);
+        return ArgTraitsLifting.Create(this, carg, maskLiftSeq: maskAll, maskLiftTen: maskAll, maskLiftOpt: maskOpt);
+    }
+
+    protected override BoundNode ReduceCore(IReducer reducer, BndCallNode call)
+    {
+        Validation.AssertValue(reducer);
+        Validation.Assert(IsValidCall(call));
+
+        var srcArg = call.Args[0];
+        if (srcArg.TryGetString(out var str))
+        {
+            if (string.IsNullOrEmpty(str))
+                return srcArg;
+        }
+
+        return call;
+    }
+
+    public static int Exec(string src)
+    {
+        if (src == null)
+            return 0;
+        return (int)src[0];
+    }
+}

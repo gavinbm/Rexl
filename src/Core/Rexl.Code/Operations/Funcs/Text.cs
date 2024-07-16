@@ -293,3 +293,24 @@ public sealed class TextReplaceGen : GetMethGen<TextReplaceFunc>
         return true;
     }
 }
+
+public sealed class TextToAsciiGen : GetMethGen<TextToAsciiFunc>
+{
+    public static readonly TextToAsciiGen Instance = new TextToAsciiGen();
+
+    private readonly MethodInfo _meth;
+
+    private TextToAsciiGen()
+    {
+        _meth = new Func<string, int>(TextToAsciiFunc.Exec).Method;
+    }
+
+    protected override bool TryGetMeth(ICodeGen codeGen, BndCallNode call, out MethodInfo meth)
+    {
+        Validation.AssertValue(codeGen);
+        Validation.Assert(IsValidCall(call, true));
+
+        meth = _meth;
+        return true;
+    }
+}

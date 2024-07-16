@@ -383,6 +383,8 @@ public class BuiltinFunctions : OperationRegistry
             A.Create(S.TextReplace_Remove, S.AboutTextReplace_Remove),
             A.Create(S.TextReplace_Insert, S.AboutTextReplace_Insert)));
 
+        AddOne(TextToAsciiFunc.Instance, new Sig(S.AboutTextToAscii, A.Create(S.ArgSource, S.AboutTextToAscii_Source)));
+
         AddOne(SetFieldsFunc.AddFields,
             new Sig(S.AboutAddFields,
                 Args.Create(

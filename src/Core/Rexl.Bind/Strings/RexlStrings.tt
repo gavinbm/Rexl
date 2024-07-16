@@ -340,6 +340,9 @@ AboutStartsWith = "Tests whether the beginning of the source text matches the lo
 AboutStartsWith_Source = "The text to look in."
 AboutStartsWith_LookUp = "The text to look for."
 
+AboutTextToAscii = "Converts the given text to its corresponding ASCII values and returns that value."
+AboutTextToAscii_Source = "The text to get the ASCII value for."
+
 AboutEndsWith = "Tests whether the end of the source text matches the lookup text."
 
 AboutStrLen = "Returns the number of characters in the text value."

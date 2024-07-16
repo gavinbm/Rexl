@@ -386,6 +386,8 @@ static partial class RexlStrings
     public static readonly StringId TextReplace_Remove = new(nameof(TextReplace_Remove), "remove");
     public static readonly StringId TextReplace_Insert = new(nameof(TextReplace_Insert), "insert");
 
+    public static readonly StringId AboutTextToAscii = new(nameof(AboutTextToAscii), "Converts the given text to its corresponding ASCII values and returns that value.");
+    public static readonly StringId AboutTextToAscii_Source = new(nameof(AboutTextToAscii_Source), "The text to get the ASCII value for.");
     public static readonly StringId AboutIsNull = new(nameof(AboutIsNull), "Tests whether the source value is null.");
     public static readonly StringId AboutIsNull_Source = new(nameof(AboutIsNull_Source), "The source value to be tested.");
 
